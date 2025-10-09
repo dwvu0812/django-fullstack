@@ -1,16 +1,30 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from app.models import Article
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 
-def home(request):
-    articles = Article.objects.all()
-    return render(request, "app/home.html", {"articles": articles})
+class ArticleListView(ListView):
+    model = Article
+    template_name = "app/home.html"
+    context_object_name = "articles"
 
 
-class CreateArticleView(CreateView):
+class ArticleCreateView(CreateView):
+    template_name = "app/article_create.html"
     model = Article
     fields = ["title", "content", "word_count", "twitter_post", "status"]
-    template_name = "app/article_create.html"
+    success_url = reverse_lazy("home")
+
+
+class ArticleUpdateView(UpdateView):
+    template_name = "app/article_update.html"
+    model = Article
+    fields = ["title", "content", "word_count", "twitter_post", "status"]
+    success_url = reverse_lazy("home")
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = "app/article_delete.html"
     success_url = reverse_lazy("home")
