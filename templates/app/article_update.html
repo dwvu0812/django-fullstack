@@ -1,6 +1,7 @@
 ﻿{% extends "app/base.html" %} {% block content %}
 <h1>Update Article</h1>
 <p>Editing: <strong>{{ object.title }}</strong></p>
+<p>{{article.word_count}} word{{article.word_count|pluralize}}</p>
 
 <form method="post">
   {% csrf_token %} {{ form.as_p }}

@@ -4,7 +4,10 @@
 <ul>
   {% for article in articles %}
   <li>
-    {{ article.title }}
+    <span
+      >{{ article.title }} - with {{ article.word_count }}
+      word{{article.word_count|pluralize }}</span
+    >
     <a href="{% url 'update_article' pk=article.id %}">&#128393;</a>
     <a href="{% url 'delete_article' pk=article.id %}">&#128473;</a>
   </li>
