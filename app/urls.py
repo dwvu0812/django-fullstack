@@ -8,11 +8,7 @@ from app.views import (
 
 urlpatterns = [
     path("", ArticleListView.as_view(), name="home"),
-    path("articles/create/", ArticleCreateView.as_view(), name="create_article"),
-    path(
-        "articles/update/<int:pk>/", ArticleUpdateView.as_view(), name="update_article"
-    ),
-    path(
-        "articles/delete/<int:pk>/", ArticleDeleteView.as_view(), name="delete_article"
-    ),
+    path("create/", ArticleCreateView.as_view(), name="create_article"),
+    path("update/<int:pk>/", ArticleUpdateView.as_view(), name="update_article"),
+    path("delete/<int:pk>/", ArticleDeleteView.as_view(), name="delete_article"),
 ]
