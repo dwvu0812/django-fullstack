@@ -11,6 +11,9 @@ RUN poetry install --no-root
 
 COPY . .
 
+# Make the startup script executable
+RUN chmod +x start.sh
+
 EXPOSE 8000
 
-ENTRYPOINT ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["./start.sh"]
