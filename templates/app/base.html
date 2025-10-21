@@ -6,8 +6,60 @@
     <title>Django Fullstack</title>
   </head>
   <body>
-    <nav>Common Navbar</nav>
+    <nav
+      style="
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+      "
+    >
+      <span style="font-weight: bold; color: #333">Django Fullstack</span>
+      {% if user.is_authenticated %}
+      <span style="float: right">
+        Welcome, <strong>{{ user.username }}</strong>!
+        <form
+          method="post"
+          action="{% url 'logout' %}"
+          style="display: inline; margin-left: 10px"
+        >
+          {% csrf_token %}
+          <button
+            type="submit"
+            style="
+              background: none;
+              border: none;
+              color: #dc3545;
+              text-decoration: underline;
+              cursor: pointer;
+              font-size: inherit;
+              padding: 0;
+            "
+          >
+            Logout
+          </button>
+        </form>
+      </span>
+      {% else %}
+      <span style="float: right">
+        <a
+          href="{% url 'login' %}"
+          style="color: #007bff; text-decoration: none"
+          >Login</a
+        >
+      </span>
+      {% endif %}
+    </nav>
     {% block content %} {% endblock %}
-    <footer>Common Footer</footer>
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        color: #666;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+      "
+    >
+      Django Fullstack Application
+    </footer>
   </body>
 </html>

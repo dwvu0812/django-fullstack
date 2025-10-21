@@ -136,3 +136,8 @@ if DEBUG:
 
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [ip[: ip.rfind(".")] + ".1" for ip in ips]
+
+# Authentication settings
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/articles/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"

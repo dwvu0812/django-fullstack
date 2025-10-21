@@ -1,20 +1,79 @@
 {% extends "app/base.html" %} {% block content %}
-<h1>Articles</h1>
+<h1>My Articles</h1>
+
 {% if articles %}
-<ul>
+<ul style="list-style: none; padding: 0">
   {% for article in articles %}
-  <li>
-    <span
-      >{{ article.title }} - with {{ article.word_count }}
-      word{{article.word_count|pluralize }}</span
-    >
-    <a href="{% url 'update_article' pk=article.id %}">&#128393;</a>
-    <a href="{% url 'delete_article' pk=article.id %}">&#128473;</a>
+  <li
+    style="
+      margin-bottom: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    "
+  >
+    <div>
+      <h3 style="margin: 0 0 5px 0; color: #333">{{ article.title }}</h3>
+      <p style="margin: 5px 0; color: #666">
+        {{ article.word_count }} word{{ article.word_count|pluralize }}
+      </p>
+      <small style="color: #888">
+        Created by: <strong>{{ article.creator.username }}</strong> | Status:
+        <span style="color: #007bff">{{ article.get_status_display }}</span> |
+        {{ article.created_at|date:"M d, Y" }}
+      </small>
+    </div>
+    <div style="margin-top: 10px">
+      <a
+        href="{% url 'update_article' pk=article.id %}"
+        style="
+          display: inline-block;
+          margin-right: 10px;
+          padding: 5px 10px;
+          color: white;
+          text-decoration: none;
+          border-radius: 3px;
+        "
+      >
+        ✏️ Edit
+      </a>
+      <a
+        href="{% url 'delete_article' pk=article.id %}"
+        style="
+          display: inline-block;
+          padding: 5px 10px;
+          color: white;
+          text-decoration: none;
+          border-radius: 3px;
+        "
+      >
+        🗑️ Delete
+      </a>
+    </div>
   </li>
   {% endfor %}
 </ul>
 {% else %}
-<p>No articles found</p>
+<p style="color: #666; font-style: italic">
+  No articles found. Create your first article!
+</p>
 {% endif %}
-<a href="{% url 'create_article' %}">Create Article</a>
+
+<div style="margin-top: 20px">
+  <a
+    href="{% url 'create_article' %}"
+    style="
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    "
+  >
+    ➕ Create New Article
+  </a>
+</div>
 {% endblock %}

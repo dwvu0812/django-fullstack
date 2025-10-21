@@ -21,7 +21,9 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("articles/", include("app.urls")),
+    path("", include("app.urls")),  # Make articles the homepage
 ]
 
 if settings.DEBUG:
