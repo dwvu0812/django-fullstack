@@ -4,12 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Khanh Du Vu <khanhdu1211@gmail.com>"]
 readme = "README.md"
-packages = [{include = "django_fullstack"}]
+packages = [{ include = "django_fullstack" }]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 django = "^5.2.7"
 django-debug-toolbar = "^6.0.0"
+django-allauth = "^0.57.0"
 
 
 [build-system]

@@ -21,7 +21,10 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
+    path("accounts/", include("allauth.urls")),  # Allauth URLs (includes social auth)
+    path(
+        "auth/", include("django.contrib.auth.urls")
+    ),  # Keep existing auth URLs for backward compatibility
     path("articles/", include("app.urls")),
     path("", include("app.urls")),  # Make articles the homepage
 ]
