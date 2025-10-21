@@ -1,8 +1,24 @@
-{% extends "app/base.html" %} {% block content %}
-<h1>Create Article</h1>
-<form method="post">
+{% extends "app/base.html" %} {% load i18n %} {% block content %}
+<h1>{% trans "Create Article" %}</h1>
+<form method="post" style="max-width: 600px">
   {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Create</button>
+  <button
+    type="submit"
+    style="
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    "
+  >
+    {% trans "Create" %}
+  </button>
 </form>
-<a href="{% url 'home' %}">Back to Home</a>
+<div style="margin-top: 20px">
+  <a href="{% url 'home' %}" style="color: #007bff; text-decoration: none">
+    ← {% trans "Back to Home" %}
+  </a>
+</div>
 {% endblock %}

@@ -18,20 +18,32 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
+from . import views
 
+# Non-translatable URLs (admin, debug, language switching)
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path(
+        "i18n/setlang/", views.set_language, name="set_language"
+    ),  # Custom language switching
+]
+
+# Add debug toolbar for development
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ]
+
+# Translatable URLs with language prefix
+urlpatterns += i18n_patterns(
     path("accounts/", include("allauth.urls")),  # Allauth URLs (includes social auth)
     path(
         "auth/", include("django.contrib.auth.urls")
     ),  # Keep existing auth URLs for backward compatibility
     path("articles/", include("app.urls")),
     path("", include("app.urls")),  # Make articles the homepage
-]
-
-if settings.DEBUG:
-    import debug_toolbar
-
-    urlpatterns = [
-        path("__debug__/", include(debug_toolbar.urls)),
-    ] + urlpatterns
+    prefix_default_language=False,  # Don't add /en/ prefix for default language
+)

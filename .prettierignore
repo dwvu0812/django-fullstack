@@ -1,0 +1,35 @@
+# Django templates
+templates/**/*.html
+
+# Django static files
+static/
+staticfiles/
+
+# Python files (use Black instead)
+*.py
+
+# Django migrations
+**/migrations/*.py
+
+# Locale files
+locale/
+
+# Database
+*.sqlite3
+db.sqlite3
+
+# Environment files
+.env
+.env.*
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/

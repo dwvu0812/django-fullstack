@@ -1,5 +1,5 @@
-{% extends "app/base.html" %} {% block content %}
-<h1>My Articles</h1>
+{% extends "app/base.html" %} {% load i18n %} {% block content %}
+<h1>{% trans "My Articles" %}</h1>
 
 {% if articles %}
 <ul style="list-style: none; padding: 0">
@@ -16,10 +16,12 @@
     <div>
       <h3 style="margin: 0 0 5px 0; color: #333">{{ article.title }}</h3>
       <p style="margin: 5px 0; color: #666">
-        {{ article.word_count }} word{{ article.word_count|pluralize }}
+        {% blocktrans count counter=article.word_count %}{{ counter }} word{%
+        plural %}{{ counter }} words{% endblocktrans %}
       </p>
       <small style="color: #888">
-        Created by: <strong>{{ article.creator.username }}</strong> | Status:
+        {% trans "Created by" %}:
+        <strong>{{ article.creator.username }}</strong> | {% trans "Status" %}:
         <span style="color: #007bff">{{ article.get_status_display }}</span> |
         {{ article.created_at|date:"M d, Y" }}
       </small>
@@ -31,24 +33,26 @@
           display: inline-block;
           margin-right: 10px;
           padding: 5px 10px;
+          background-color: #007bff;
           color: white;
           text-decoration: none;
           border-radius: 3px;
         "
       >
-        ✏️ Edit
+        ✏️ {% trans "Edit" %}
       </a>
       <a
         href="{% url 'delete_article' pk=article.id %}"
         style="
           display: inline-block;
           padding: 5px 10px;
+          background-color: #dc3545;
           color: white;
           text-decoration: none;
           border-radius: 3px;
         "
       >
-        🗑️ Delete
+        🗑️ {% trans "Delete" %}
       </a>
     </div>
   </li>
@@ -56,7 +60,7 @@
 </ul>
 {% else %}
 <p style="color: #666; font-style: italic">
-  No articles found. Create your first article!
+  {% trans "No articles found. Create your first article!" %}
 </p>
 {% endif %}
 
@@ -73,7 +77,7 @@
       font-weight: bold;
     "
   >
-    ➕ Create New Article
+    ➕ {% trans "Create New Article" %}
   </a>
 </div>
 {% endblock %}

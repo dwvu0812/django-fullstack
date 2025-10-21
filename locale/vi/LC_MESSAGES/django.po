@@ -1,0 +1,255 @@
+# Vietnamese translations for Django Fullstack
+# Copyright (C) 2025 Django Fullstack
+# This file is distributed under the same license as the Django Fullstack package.
+# Django Assistant <assistant@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Django Fullstack 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-22 06:06+0700\n"
+"PO-Revision-Date: 2025-10-22 06:01+0700\n"
+"Last-Translator: Django Assistant <assistant@example.com>\n"
+"Language-Team: Vietnamese <vi@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\app\models.py:8
+msgid "Draft"
+msgstr "Bản nháp"
+
+#: .\app\models.py:9
+msgid "In Progress"
+msgstr "Đang tiến hành"
+
+#: .\app\models.py:10
+msgid "Published"
+msgstr "Đã xuất bản"
+
+#: .\app\models.py:19
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: .\app\models.py:20
+msgid "Content"
+msgstr "Nội dung"
+
+#: .\app\models.py:21
+msgid "Word Count"
+msgstr "Số từ"
+
+#: .\app\models.py:22
+msgid "Twitter Post"
+msgstr "Bài đăng Twitter"
+
+#: .\app\models.py:24 .\templates\app\home.html:24
+msgid "Status"
+msgstr "Trạng thái"
+
+#: .\app\models.py:26
+msgid "Created At"
+msgstr "Ngày tạo"
+
+#: .\app\models.py:27
+msgid "Updated At"
+msgstr "Ngày cập nhật"
+
+#: .\app\models.py:32
+msgid "Creator"
+msgstr "Người tạo"
+
+#: .\app\views.py:28
+msgid "Article created successfully!"
+msgstr "Tạo bài viết thành công!"
+
+#: .\app\views.py:43
+msgid "Article updated successfully!"
+msgstr "Cập nhật bài viết thành công!"
+
+#: .\app\views.py:57
+msgid "Article deleted successfully!"
+msgstr "Xóa bài viết thành công!"
+
+#: .\django_fullstack\settings.py:124
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: .\django_fullstack\settings.py:125
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
+
+#: .\templates\account\login.html:6 .\templates\account\login.html:34
+#: .\templates\app\base.html:66 .\templates\registration\login.html:6
+#: .\templates\registration\login.html:28
+msgid "Login"
+msgstr "Đăng nhập"
+
+#: .\templates\account\login.html:16
+msgid "Username or Email"
+msgstr "Tên đăng nhập hoặc Email"
+
+#: .\templates\account\login.html:23 .\templates\account\login.html:55
+#: .\templates\account\signup.html:30 .\templates\registration\login.html:23
+#: .\templates\registration\login.html:49
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: .\templates\account\login.html:30
+msgid "Remember me"
+msgstr "Ghi nhớ tôi"
+
+#: .\templates\account\login.html:39 .\templates\account\signup.html:47
+#: .\templates\registration\login.html:33
+msgid "or"
+msgstr "hoặc"
+
+#: .\templates\account\login.html:49 .\templates\registration\login.html:43
+msgid "Login with GitHub"
+msgstr "Đăng nhập với GitHub"
+
+#: .\templates\account\login.html:54 .\templates\registration\login.html:48
+msgid "Demo credentials"
+msgstr "Thông tin đăng nhập demo"
+
+#: .\templates\account\login.html:55 .\templates\account\signup.html:16
+#: .\templates\registration\login.html:16
+#: .\templates\registration\login.html:49
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+#: .\templates\account\login.html:60
+msgid "Forgot Password?"
+msgstr "Quên mật khẩu?"
+
+#: .\templates\account\signup.html:6 .\templates\account\signup.html:42
+msgid "Sign Up"
+msgstr "Đăng ký"
+
+#: .\templates\account\signup.html:23
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\account\signup.html:37
+msgid "Confirm Password"
+msgstr "Xác nhận mật khẩu"
+
+#: .\templates\account\signup.html:57
+msgid "Sign up with GitHub"
+msgstr "Đăng ký với GitHub"
+
+#: .\templates\account\signup.html:63
+msgid "Already have an account?"
+msgstr "Đã có tài khoản?"
+
+#: .\templates\account\signup.html:64
+msgid "Login here"
+msgstr "Đăng nhập tại đây"
+
+#: .\templates\app\article_create.html:2
+msgid "Create Article"
+msgstr "Tạo bài viết"
+
+#: .\templates\app\article_create.html:16
+msgid "Create"
+msgstr "Tạo"
+
+#: .\templates\app\article_create.html:21
+#: .\templates\app\article_delete.html:40
+#: .\templates\app\article_update.html:46
+msgid "Back to Home"
+msgstr "Về trang chủ"
+
+#: .\templates\app\article_delete.html:2
+msgid "Delete Article"
+msgstr "Xóa bài viết"
+
+#: .\templates\app\article_delete.html:4
+#, fuzzy, python-format
+#| msgid "Are you sure you want to delete <strong>%(title)s</strong>?"
+msgid ""
+"Are you sure you want to delete\n"
+"  <strong>%(title)s</strong>?"
+msgstr "Bạn có chắc chắn muốn xóa <strong>%(title)s</strong>?"
+
+#: .\templates\app\article_delete.html:22
+msgid "Confirm Delete"
+msgstr "Xác nhận xóa"
+
+#: .\templates\app\article_delete.html:34
+#: .\templates\app\article_update.html:36
+msgid "Cancel"
+msgstr "Hủy"
+
+#: .\templates\app\article_update.html:2
+msgid "Update Article"
+msgstr "Cập nhật bài viết"
+
+#: .\templates\app\article_update.html:3
+msgid "Editing"
+msgstr "Đang chỉnh sửa"
+
+#: .\templates\app\article_update.html:5
+#, python-format
+msgid ""
+"%(counter)s word{%% plural\n"
+"  %%}%(counter)s words"
+msgstr ""
+
+#: .\templates\app\article_update.html:24
+msgid "Save"
+msgstr "Lưu"
+
+#: .\templates\app\article_update.html:52 .\templates\app\home.html:55
+msgid "Delete"
+msgstr "Xóa"
+
+#: .\templates\app\base.html:8 .\templates\app\base.html:18
+msgid "Django Fullstack"
+msgstr "Django Fullstack"
+
+#: .\templates\app\base.html:38
+#, python-format
+msgid "Welcome, <strong>%(username)s</strong>!"
+msgstr "Chào mừng, <strong>%(username)s</strong>!"
+
+#: .\templates\app\base.html:57
+msgid "Logout"
+msgstr "Đăng xuất"
+
+#: .\templates\app\base.html:93
+msgid "Django Fullstack Application"
+msgstr "Ứng dụng Django Fullstack"
+
+#: .\templates\app\home.html:2
+msgid "My Articles"
+msgstr "Bài viết của tôi"
+
+#: .\templates\app\home.html:19
+#, python-format
+msgid ""
+"%(counter)s word{%%\n"
+"        plural %%}%(counter)s words"
+msgstr ""
+
+#: .\templates\app\home.html:23
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#: .\templates\app\home.html:42
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: .\templates\app\home.html:63
+msgid "No articles found. Create your first article!"
+msgstr "Không tìm thấy bài viết nào. Hãy tạo bài viết đầu tiên của bạn!"
+
+#: .\templates\app\home.html:80
+msgid "Create New Article"
+msgstr "Tạo bài viết mới"
+
+#~ msgid "%(counter)s word"
+#~ msgid_plural "%(counter)s words"
+#~ msgstr[0] "%(counter)s từ"

@@ -1,9 +1,11 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ CURRENT_LANGUAGE }}">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Django Fullstack</title>
+    <title>{% trans "Django Fullstack" %}</title>
   </head>
   <body>
     <nav
@@ -13,42 +15,71 @@
         border-bottom: 1px solid #ddd;
       "
     >
-      <span style="font-weight: bold; color: #333">Django Fullstack</span>
-      {% if user.is_authenticated %}
-      <span style="float: right">
-        Welcome, <strong>{{ user.username }}</strong>!
-        <form
-          method="post"
-          action="{% url 'logout' %}"
-          style="display: inline; margin-left: 10px"
-        >
+      <span style="font-weight: bold; color: #333">{% trans "Django Fullstack" %}</span>
+      
+      <div style="float: right;">
+        <!-- Language Switcher -->
+        <form action="{% url 'set_language' %}" method="post" style="display: inline; margin-right: 15px;">
           {% csrf_token %}
-          <button
-            type="submit"
-            style="
-              background: none;
-              border: none;
-              color: #dc3545;
-              text-decoration: underline;
-              cursor: pointer;
-              font-size: inherit;
-              padding: 0;
-            "
-          >
-            Logout
-          </button>
+          <select name="language" onchange="this.form.submit()" style="padding: 2px; font-size: 12px;">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% for lang_code, lang_name in LANGUAGES %}
+              <option value="{{ lang_code }}"{% if lang_code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ lang_name }}
+              </option>
+            {% endfor %}
+          </select>
         </form>
-      </span>
-      {% else %}
-      <span style="float: right">
-        <a
-          href="{% url 'login' %}"
-          style="color: #007bff; text-decoration: none"
-          >Login</a
-        >
-      </span>
-      {% endif %}
+        
+        {% if user.is_authenticated %}
+        <span>
+          {% blocktrans with username=user.username %}Welcome, <strong>{{ username }}</strong>!{% endblocktrans %}
+          <form
+            method="post"
+            action="{% url 'logout' %}"
+            style="display: inline; margin-left: 10px"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              style="
+                background: none;
+                border: none;
+                color: #dc3545;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: inherit;
+                padding: 0;
+              "
+            >
+              {% trans "Logout" %}
+            </button>
+          </form>
+        </span>
+        {% else %}
+        <span>
+          <a
+            href="{% url 'login' %}"
+            style="color: #007bff; text-decoration: none"
+            >{% trans "Login" %}</a
+          >
+        </span>
+        {% endif %}
+      </div>
     </nav>
+    
+    <!-- Display messages -->
+    {% if messages %}
+      <div style="padding: 10px;">
+        {% for message in messages %}
+          <div style="padding: 10px; margin: 5px 0; border-radius: 4px; background-color: {% if message.tags == 'success' %}#d4edda; color: #155724; border: 1px solid #c3e6cb{% elif message.tags == 'error' %}#f8d7da; color: #721c24; border: 1px solid #f5c6cb{% else %}#d1ecf1; color: #0c5460; border: 1px solid #bee5eb{% endif %};">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
     {% block content %} {% endblock %}
     <footer
       style="
@@ -59,7 +90,7 @@
         margin-top: 40px;
       "
     >
-      Django Fullstack Application
+      {% trans "Django Fullstack Application" %}
     </footer>
   </body>
 </html>

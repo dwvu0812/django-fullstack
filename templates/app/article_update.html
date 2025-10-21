@@ -1,13 +1,55 @@
-﻿{% extends "app/base.html" %} {% block content %}
-<h1>Update Article</h1>
-<p>Editing: <strong>{{ object.title }}</strong></p>
-<p>{{article.word_count}} word{{article.word_count|pluralize}}</p>
+﻿{% extends "app/base.html" %} {% load i18n %} {% block content %}
+<h1>{% trans "Update Article" %}</h1>
+<p>{% trans "Editing" %}: <strong>{{ object.title }}</strong></p>
+<p>
+  {% blocktrans count counter=object.word_count %}{{ counter }} word{% plural
+  %}{{ counter }} words{% endblocktrans %}
+</p>
 
-<form method="post">
+<form method="post" style="max-width: 600px">
   {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Save</button>
-  <a href="{% url 'home' %}">Cancel</a>
+  <div style="margin-top: 20px">
+    <button
+      type="submit"
+      style="
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      "
+    >
+      {% trans "Save" %}
+    </button>
+    <a
+      href="{% url 'home' %}"
+      style="
+        padding: 10px 20px;
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      "
+    >
+      {% trans "Cancel" %}
+    </a>
+  </div>
 </form>
-<a href="{% url 'home' %}">Back to Home</a>
-<a href="{% url 'delete_article' pk=article.id %}">Delete</a>
+
+<div style="margin-top: 20px">
+  <a
+    href="{% url 'home' %}"
+    style="color: #007bff; text-decoration: none; margin-right: 20px"
+  >
+    ← {% trans "Back to Home" %}
+  </a>
+  <a
+    href="{% url 'delete_article' pk=object.id %}"
+    style="color: #dc3545; text-decoration: none"
+  >
+    🗑️ {% trans "Delete" %}
+  </a>
+</div>
 {% endblock %}
